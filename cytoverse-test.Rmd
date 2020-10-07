@@ -1,0 +1,135 @@
+---
+title: "Cytoverse Test"
+author: <YOUR NAME HERE>
+date: "`r Sys.time()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load cytoverse packages
+
+```{r packages}
+library(flowCore)
+library(flowWorkspace)
+library(openCyto)
+library(ggcyto)
+```
+
+## Construct an R object (`flowSet`) from FCS files
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
+
+```{r flowset}
+data_path <- system.file("extdata", package = "flowWorkspaceData")
+files <- list.files(pattern = "CytoTrol", path = data_path, full = TRUE)
+
+fs <- flowCore::<YOUR FUNCTION HERE>(files = files)
+fs
+```
+
+## Take a look at the first sample
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
+
+```{r explore}
+<YOUR CODE HERE>
+```
+
+## Determine which cytometer was used from the FCS keywords.
+
+- Hint: "$CYT" denotes the type of flow cytometer.
+
+```{r cytometer}
+<YOUR CODE HERE>
+```
+
+## Compensation
+
+Before proceeding with further analysis of the data in flowSet, it is important to properly compensate the data for spectral overlap between fluorescence channels.
+
+```{r compensation}
+compensation_matrix <- flowCore::fsApply(fs, function(x) flowCore::spillover(x)[[1]], simplify = FALSE)
+fs_compensated <- flowCore::<YOUR FUNCTION HERE>(fs, compensation_matrix)
+```
+
+## Transformation
+
+All of the stained channels need to be transformed properly before the gating. Here we use the `flowCore::estimateLogicle` method to determine the logicle transformation.
+
+```{r transformation}
+transList <- flowCore::estimateLogicle(fs_compensated[[1]], names(markernames(fs)))
+fs_transformed <- flowCore::<YOUR FUNCTION HERE>(fs_compensated, transList)
+```
+
+## Visualize the expression values of CD8 (`CD8 APCH7`) from original flowSet, compensated flowSet, and transformed flowSet
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/ggcyto/inst/doc/autoplot.html
+
+```{r plot}
+<YOUR CODE HERE>
+```
+
+## Compute the median expression values for each channel in the first sample
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
+
+```{r median}
+<YOUR CODE HERE>
+```
+
+## Create a gating set object from `fs_transformed`
+
+```{r create-gs}
+gs <- flowWorkspace::<YOUR FUNCTION HERE>(fs_transformed)
+```
+
+## Load the gating template
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/manuals/openCyto/man/openCyto.pdf
+
+```{r template}
+gtFile <- system.file("extdata/gating_template/tcell.csv", package = "openCyto")
+gt <- openCyto::<YOUR FUNCTION HERE>(gtFile)
+gt
+```
+
+## Plot the gating template
+
+```{r plot-template}
+plot(gt)
+```
+
+## Apply the gating template to the gating set
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/manuals/openCyto/man/openCyto.pdf
+
+```{r gating}
+openCyto::<YOUR FUNCTION HERE>(gt, gs)
+```
+
+## Plot the gates of the first sample
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/ggcyto/inst/doc/autoplot.html
+
+```{r first-plot}
+ggcyto::autoplot(gs[[1]])
+```
+
+## Plot the lymphocyte gate (`lymph`) of all samples
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/ggcyto/inst/doc/autoplot.html
+
+```{r lymph-plot}
+<YOUR CODE HERE>
+```
+
+## Retrieve the cell populations from the gating set object
+
+- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/flowWorkspace/inst/doc/flowWorkspace-Introduction.html
+
+```{r pops}
+flowWorkspace::<YOUR FUNCTION HERE>(gs)
+```
