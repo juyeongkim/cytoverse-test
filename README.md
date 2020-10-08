@@ -13,7 +13,7 @@ docker pull juyeongkim/cytoverse-test:latest
 docker run -e PASSWORD=1234 -p 8787:8787 juyeongkim/cytoverse-test:latest
 ```
 
-In your browser, nagivage to http://localhost:8787 and log in with `rstudio` as user and `1234` as password. Open the Rmarkdown (`cytoverse-test.Rmd`) in home directory.
+In your browser, navigate to http://localhost:8787 and log in with `rstudio` as user and `1234` as password. Open the Rmarkdown (`cytoverse-test.Rmd`) in home directory.
 
 ### Local installation
 
@@ -29,7 +29,7 @@ BiocManager::install(c("flowCore", "flowWorkspace", "flowWorkspaceData", "openCy
 
 ### Rmarkdown report
 
-The Rmarkdown report is incomplete. It is filled with `<YOUR CODE HERE>` or `<YOUR FUNCTION HERE>` in code chunks. If you try to render this report, it will error out. Your task is to replace the `<YOUR ... HERE>` with the correct code/function to match with the objective of the code chunks and successfully render the report. Please send us the rendered report (`cytoverse-test.hmtl`). The goal of this task is not to make you an expert in using cytometry tools we built, but to assess how well you can jump into using different bioinfomatics tools and follow the documentation. Please read these documentations if you are not familiar with cytoverse tools:
+The Rmarkdown report is incomplete. It is filled with `<YOUR CODE HERE>` or `<YOUR FUNCTION HERE>` in code chunks. If you try to render this report, it will error out. Your task is to replace the `<YOUR ... HERE>` with the correct code/function to match with the objective of the code chunks and successfully render the report. Please send us the rendered report (`cytoverse-test.html`). The goal of this task is not to make you an expert in using cytometry tools we built, but to assess how well you can jump into using different bioinfomatics tools and follow the documentation. Please read these documentations if you are not familiar with cytoverse tools:
 
 - [flowCore](https://www.bioconductor.org/packages/release/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf)
 - [ggcyto](https://www.bioconductor.org/packages/release/bioc/vignettes/ggcyto/inst/doc/autoplot.html)

@@ -30,9 +30,7 @@ fs <- flowCore::<YOUR FUNCTION HERE>(files = files)
 fs
 ```
 
-## Take a look at the first sample
-
-- Hint: https://www.bioconductor.org/packages/release/bioc/vignettes/flowCore/inst/doc/HowTo-flowCore.pdf
+## Take a look at the first sample - can you tell how many cells there are?
 
 ```{r explore}
 <YOUR CODE HERE>
@@ -104,8 +102,6 @@ plot(gt)
 
 ## Apply the gating template to the gating set
 
-- Hint: https://www.bioconductor.org/packages/release/bioc/manuals/openCyto/man/openCyto.pdf
-
 ```{r gating}
 openCyto::<YOUR FUNCTION HERE>(gt, gs)
 ```
@@ -132,4 +128,17 @@ ggcyto::autoplot(gs[[1]])
 
 ```{r pops}
 flowWorkspace::<YOUR FUNCTION HERE>(gs)
+```
+
+Questions to check understanding:
+```{r, questions}
+# 1. What are the marker names used in these FCS files?
+
+# 2. How many different cell populations (nodes) are defined in the gating template?
+
+# 3. How many CD4+ T cells and CD8+ T cells are in each sample?
+
+# 4. Looking at the density plots of CD8 marker expression after transformation in the report, where would you put a partition line to divide the low and high expressed cells? Note: Expression is on the x-axis. Also, how would you do it programatically?
+  
+  
 ```
