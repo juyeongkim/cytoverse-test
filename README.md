@@ -41,7 +41,6 @@ The Rmarkdown report is incomplete. It is filled with `<YOUR CODE HERE>` or `<YO
 Once you complete rendering the report, please answer these questions. Answering them should be easy and straight forward if you were able to complete the previous task.
 
 1. What are the marker names used in these FCS files?
-1. What kind of cytometer was used for this experiment?
 1. How many different cell populations (nodes) are defined in the gating template?
 1. How many CD4+ T cells and CD8+ T cells are in each sample?
 1. Looking at the density plots of CD8 marker expression after transformation in the report, where would you put a partition line to divide the low and high expressed cells? Also, how would you do it programatically?
